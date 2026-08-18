@@ -1,0 +1,1474 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Italy Holiday Dashboard 2026</title>
+<style>
+  :root {
+    --color-primary: #1d4ed8;
+    --color-primary-content: #ffffff;
+    --color-secondary: #c2410c;
+    --color-secondary-content: #ffffff;
+    --color-accent: #047857;
+    --color-accent-content: #ffffff;
+    --color-neutral: #475569;
+    --color-neutral-content: #f8fafc;
+    --color-base-100: #ffffff;
+    --color-base-200: #f1f5f9;
+    --color-base-300: #e2e8f0;
+    --color-base-content: #0f172a;
+    --color-info: #0ea5e9;
+    --color-info-content: #ffffff;
+    --color-success: #16a34a;
+    --color-success-content: #ffffff;
+    --color-warning: #f59e0b;
+    --color-warning-content: #1c1917;
+    --color-error: #dc2626;
+    --color-error-content: #ffffff;
+    --color-border: #cbd5e1;
+    --color-input: #e2e8f0;
+    --color-muted: #64748b;
+    /* fallbacks for standalone */
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --text: #0f172a;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #dbeafe 0%, #fef3c7 50%, #fce7f3 100%);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1e3a8a 0%, #7c2d12 100%);
+    color: #fff;
+    padding: 48px 24px 40px;
+    text-align: center;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=1600&q=80");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.35;
+    z-index: 0;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero h1 {
+    margin: 0 0 8px;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .hero .subtitle {
+    margin: 0;
+    font-size: clamp(14px, 2.5vw, 18px);
+    opacity: 0.95;
+    font-weight: 500;
+  }
+  .hero .dates {
+    margin-top: 12px;
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 16px 48px;
+  }
+  .section {
+    margin-bottom: 32px;
+  }
+  .trip-map-card {
+    background: var(--card);
+    border: 1px solid var(--color-base-300);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .trip-map-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--color-base-200);
+  }
+  .trip-map-head h3 {
+    margin: 0;
+    font-size: 16px;
+  }
+  .trip-map-head p {
+    margin: 3px 0 0;
+    color: var(--color-muted);
+    font-size: 12px;
+  }
+  .trip-map-link {
+    flex-shrink: 0;
+    display: inline-block;
+    padding: 7px 11px;
+    border-radius: 8px;
+    background: var(--color-primary);
+    color: var(--color-primary-content);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .trip-map-link:hover { background: #1e40af; }
+  .trip-map-real {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #dbeafe;
+    aspect-ratio: 1240 / 792;
+  }
+  .trip-map-real img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+  .trip-map-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  .trip-map-overlay .route-shadow { fill: none; stroke: rgba(15, 23, 42, 0.2); stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; }
+  .trip-map-overlay .route-line { fill: none; stroke: #dc2626; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+  .trip-map-overlay .route-arrow { fill: #dc2626; }
+  .trip-map-overlay .stop { stroke: #fff; stroke-width: 4; }
+  .trip-map-overlay .stop-label { font: 800 22px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+  .trip-map-overlay .stop-sub { font: 600 16px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #475569; }
+  .trip-map-overlay .label-box { fill: rgba(255,255,255,0.96); stroke: #94a3b8; stroke-width: 2; rx: 9; }
+  .trip-map-overlay .map-note { font: 700 15px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #334155; }
+  .trip-map-overlay .north { font: 900 18px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #334155; }
+  .trip-map-overlay .number { font: 900 16px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #fff; text-anchor: middle; dominant-baseline: central; }
+  @media (max-width: 600px) {
+    .trip-map-head { align-items: flex-start; flex-direction: column; }
+    .trip-map-link { width: 100%; text-align: center; }
+    .trip-map-overlay .stop-label { font-size: 25px; }
+    .trip-map-overlay .stop-sub { font-size: 18px; }
+    .trip-map-overlay .map-note { font-size: 17px; }
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-base-content);
+    margin: 0 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title .icon { font-size: 22px; }
+  .grid {
+    display: grid;
+    gap: 16px;
+  }
+  .grid-3 { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+  .grid-2 { grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); }
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 1px solid var(--color-base-300);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+  .card-header {
+    padding: 16px 16px 12px;
+    border-bottom: 1px solid var(--color-base-200);
+  }
+  .card-header h3 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-base-content);
+  }
+  .card-header .dates {
+    font-size: 13px;
+    color: var(--color-muted);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+  .companions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .companion-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: #ede9fe;
+    color: #5b21b6;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .companion-tag.possible {
+    background: #fef3c7;
+    color: #92400e;
+  }
+  .card-body { padding: 12px 16px 16px; }
+  .stay-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+    background: var(--color-base-200);
+  }
+  .stay-img-fallback {
+    width: 100%;
+    height: 160px;
+    background: linear-gradient(135deg, #e0e7ff, #fde68a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+  }
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 14px;
+    border-bottom: 1px dashed var(--color-base-200);
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-label {
+    color: var(--color-muted);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .info-value {
+    text-align: right;
+    color: var(--color-base-content);
+    font-weight: 500;
+  }
+  .weather-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--color-base-200);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+  .weather-badge .temp { color: var(--color-primary); font-weight: 700; }
+  .weather-badge .cond { color: var(--color-muted); }
+  .weather-detail {
+    font-size: 11px;
+    color: var(--color-muted);
+    margin-top: 5px;
+  }
+  .weather-detail.weather-error { color: var(--color-error); font-weight: 600; }
+  .section-actions {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .weather-status {
+    color: var(--color-muted);
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .weather-refresh {
+    border: 1px solid var(--color-primary);
+    border-radius: 8px;
+    padding: 6px 10px;
+    background: var(--color-primary);
+    color: var(--color-primary-content);
+    cursor: pointer;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .weather-refresh:hover { background: #1e40af; }
+  .weather-refresh:disabled { opacity: 0.65; cursor: wait; }
+  .save-dashboard {
+    border: 1px solid var(--color-accent);
+    border-radius: 8px;
+    padding: 6px 10px;
+    background: var(--color-accent);
+    color: var(--color-accent-content);
+    cursor: pointer;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .save-dashboard:hover { background: #036949; }
+  .save-dashboard:disabled { opacity: 0.65; cursor: wait; }
+  .save-status {
+    color: var(--color-muted);
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s;
+    margin-top: 8px;
+  }
+  .btn-primary {
+    background: var(--color-primary);
+    color: var(--color-primary-content);
+  }
+  .btn-primary:hover { background: #1e40af; }
+  .btn-accent {
+    background: var(--color-accent);
+    color: var(--color-accent-content);
+  }
+  .btn-accent:hover { background: #036949; }
+  .btn-sm { padding: 4px 10px; font-size: 11px; }
+  .route-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--card);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--color-base-300);
+  }
+  .route-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .route-info { flex: 1; min-width: 0; }
+  .route-info .from-to {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-base-content);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .route-info .meta {
+    font-size: 12px;
+    color: var(--color-muted);
+    margin-top: 2px;
+  }
+  .route-info .meta .time { color: var(--color-secondary); font-weight: 700; }
+  .route-actions { display: flex; gap: 6px; flex-shrink: 0; }
+  .rental-card {
+    background: linear-gradient(135deg, #dcfce7 0%, #d1fae5 100%);
+    border: 2px solid #16a34a;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .rental-icon {
+    font-size: 40px;
+    flex-shrink: 0;
+  }
+  .rental-info h3 {
+    margin: 0 0 4px;
+    font-size: 18px;
+    color: #14532d;
+  }
+  .rental-info p {
+    margin: 0;
+    font-size: 13px;
+    color: #166534;
+  }
+  .checklist {
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--color-base-300);
+    padding: 20px;
+  }
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--color-base-200);
+    cursor: pointer;
+  }
+  .checklist-item:last-child { border-bottom: none; }
+  .checklist-item input[type="checkbox"] {
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--color-primary);
+    flex-shrink: 0;
+  }
+  .checklist-item label {
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--color-base-content);
+    flex: 1;
+  }
+  .checklist-item.done label {
+    text-decoration: line-through;
+    color: var(--color-muted);
+  }
+  .checklist-item .del {
+    color: var(--color-error);
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0 4px;
+    opacity: 0.4;
+    transition: opacity 0.15s;
+  }
+  .checklist-item .del:hover { opacity: 1; }
+  .checklist-item .actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .checklist-item .edit {
+    border: 1px solid var(--color-border);
+    background: var(--color-base-100);
+    color: var(--color-primary);
+    border-radius: 6px;
+    padding: 3px 8px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .checklist-item .edit:hover { background: var(--color-base-200); }
+  .checklist-edit {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+  }
+  .checklist-edit-input {
+    flex: 1;
+    min-width: 0;
+    padding: 7px 9px;
+    border: 1px solid var(--color-primary);
+    border-radius: 7px;
+    background: var(--color-base-100);
+    color: var(--color-base-content);
+    font: inherit;
+    font-size: 14px;
+  }
+  .checklist-edit-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(29,78,216,0.12);
+  }
+  .checklist-edit-actions {
+    display: inline-flex;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+  .checklist-edit-actions button {
+    border: 0;
+    border-radius: 6px;
+    padding: 6px 8px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .checklist-edit-actions .save-edit { background: var(--color-success); color: var(--color-success-content); }
+  .checklist-edit-actions .cancel-edit { background: var(--color-base-300); color: var(--color-base-content); }
+  .empty-checklist {
+    padding: 12px 0;
+    color: var(--color-muted);
+    font-size: 14px;
+  }
+  .checklist-add {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .checklist-add input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 14px;
+    background: var(--color-base-100);
+    color: var(--color-base-content);
+  }
+  .checklist-add input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(29,78,216,0.1);
+  }
+  .checklist-add button {
+    padding: 8px 16px;
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .checklist-add button:hover { background: #1e40af; }
+  .checklist-controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 12px;
+  }
+  .checklist-controls button {
+    padding: 4px 10px;
+    background: var(--color-base-200);
+    color: var(--color-muted);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .checklist-controls button:hover { background: var(--color-base-300); }
+  .checklist-stats {
+    font-size: 12px;
+    color: var(--color-muted);
+    margin-top: 8px;
+    font-weight: 600;
+  }
+  .progress-bar {
+    height: 6px;
+    background: var(--color-base-200);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 6px;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-success), var(--color-accent));
+    border-radius: 999px;
+    transition: width 0.3s;
+  }
+  .flight-section { margin-bottom: 24px; }
+  .flight-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 12px;
+    color: var(--color-base-content);
+  }
+  .flight-banner h2 { margin: 0; font-size: 20px; }
+  .flight-banner p { margin: 2px 0 0; color: var(--color-muted); font-size: 13px; }
+  .flight-icon { font-size: 28px; }
+  .flight-card {
+    background: var(--card);
+    border: 1px solid var(--color-base-300);
+    border-left: 5px solid var(--color-primary);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .flight-card.return { border-left-color: var(--color-secondary); }
+  .flight-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--color-base-200);
+    border-bottom: 1px solid var(--color-base-300);
+  }
+  .flight-card-head h3 { margin: 0; font-size: 15px; }
+  .flight-card-head span { color: var(--color-muted); font-size: 12px; font-weight: 700; }
+  .flight-legs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .flight-leg { padding: 16px; }
+  .flight-leg + .flight-leg { border-left: 1px solid var(--color-base-300); }
+  .flight-number { color: var(--color-primary); font-size: 12px; font-weight: 800; letter-spacing: 0.06em; }
+  .return .flight-number { color: var(--color-secondary); }
+  .flight-route { display: flex; align-items: center; gap: 8px; margin: 7px 0 10px; }
+  .flight-place { min-width: 0; flex: 1; }
+  .flight-place strong { display: block; font-size: 14px; }
+  .flight-place span { display: block; color: var(--color-muted); font-size: 11px; margin-top: 2px; }
+  .flight-route-arrow { color: var(--color-muted); font-size: 20px; }
+  .flight-times { display: flex; justify-content: space-between; gap: 8px; padding-top: 9px; border-top: 1px dashed var(--color-base-300); }
+  .flight-times div { font-size: 11px; color: var(--color-muted); }
+  .flight-times strong { display: block; color: var(--color-base-content); font-size: 14px; }
+  .flight-meta { margin-top: 10px; color: var(--color-muted); font-size: 11px; }
+  @media (max-width: 640px) {
+    .flight-legs { grid-template-columns: 1fr; }
+    .flight-leg + .flight-leg { border-left: 0; border-top: 1px solid var(--color-base-300); }
+  }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .summary-stat {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--color-base-300);
+  }
+  .summary-stat .num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--color-primary);
+  }
+  .summary-stat .lbl {
+    font-size: 12px;
+    color: var(--color-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+  }
+  footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--color-muted);
+    font-size: 13px;
+  }
+  .legend {
+    font-size: 11px;
+    color: var(--color-muted);
+    margin-top: 12px;
+    text-align: center;
+  }
+  @media (max-width: 600px) {
+    .hero { padding: 32px 16px 28px; }
+    .route-card { flex-wrap: wrap; }
+    .route-actions { width: 100%; justify-content: flex-end; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <h1>🇮🇹 Italy Road Trip 2026</h1>
+    <p class="subtitle">Milan → Lake Como → Brescia → Dolomites → Bassano → Parma → Milan</p>
+    <div class="dates">21 August – 10 September 2026 · 20 nights</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Inbound flights -->
+  <section class="flight-section" aria-labelledby="arrival-flights-title">
+    <div class="flight-banner">
+      <div class="flight-icon">🛬</div>
+      <div><h2 id="arrival-flights-title">Arrival flights</h2><p>Sydney → Milan via Hong Kong · Wednesday 20–Thursday 21 August</p></div>
+    </div>
+    <div class="flight-card">
+      <div class="flight-card-head"><h3>Cathay Pacific · Economy Light</h3><span>1 checked bag included</span></div>
+      <div class="flight-legs">
+        <article class="flight-leg">
+          <div class="flight-number">CX100 · 20 AUG</div>
+          <div class="flight-route"><div class="flight-place"><strong>Sydney (SYD)</strong><span>Kingsford Smith · Terminal 1</span></div><div class="flight-route-arrow">→</div><div class="flight-place"><strong>Hong Kong (HKG)</strong><span>International · Terminal 1</span></div></div>
+          <div class="flight-times"><div><strong>14:05</strong>Departs</div><div><strong>21:30</strong>Arrives</div><div><strong>9h 25m</strong>Duration</div></div>
+          <div class="flight-meta">Seat 43E · Cathay Pacific operated</div>
+        </article>
+        <article class="flight-leg">
+          <div class="flight-number">CX233 · 21 AUG</div>
+          <div class="flight-route"><div class="flight-place"><strong>Hong Kong (HKG)</strong><span>International · Terminal 1</span></div><div class="flight-route-arrow">→</div><div class="flight-place"><strong>Milan (MXP)</strong><span>Malpensa · Terminal 1</span></div></div>
+          <div class="flight-times"><div><strong>00:50</strong>Departs</div><div><strong>08:00</strong>Arrives</div><div><strong>13h 10m</strong>Duration</div></div>
+          <div class="flight-meta">Seat 40E · Cathay Pacific operated</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Summary stats -->
+  <div class="summary-grid">
+    <div class="summary-stat"><div class="num">7</div><div class="lbl">Stops</div></div>
+    <div class="summary-stat"><div class="num">20</div><div class="lbl">Nights</div></div>
+    <div class="summary-stat"><div class="num">12h 37m</div><div class="lbl">Total Driving</div></div>
+    <div class="summary-stat"><div class="num">955 km</div><div class="lbl">Total Distance</div></div>
+  </div>
+
+  <!-- Rental car -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon">🚗</span> Rental Car</h2>
+    <div class="rental-card">
+      <div class="rental-icon">✅</div>
+      <div class="rental-info">
+        <h3>Kia Sportage — Confirmed</h3>
+        <p>Booked via <strong>Autovia</strong> · Pickup: Piazza Duca d'Aosta, 20124 Milano MI, Italy</p>
+      </div>
+      <a class="btn btn-accent" href="https://www.google.com/maps/search/?api=1&query=Piazza+Duca+d'Aosta+20124+Milan+Italy" target="_blank" rel="noopener">Pickup Map</a>
+    </div>
+  </div>
+
+  <!-- Route overview -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon">📍</span> Route Overview</h2>
+    <div class="trip-map-card">
+      <div class="trip-map-head">
+        <div>
+          <h3>Italy road-trip route</h3>
+          <p>All seven stops, shown in driving order</p>
+        </div>
+        <a class="trip-map-link" href="https://www.google.com/maps/dir/Milan,+Italy/Localit%C3%A0+Bagnana+105,+Lezzeno,+Italy/Viale+Europa+25,+Brescia,+Italy/Str.+Col+Pradat+9,+Colfosco,+Italy/Via+Capitello+17,+San+Zenone+degli+Ezzelini,+Italy/Via+Federico+II+4,+Parma,+Italy/Via+Giovanni+Battista+Sammartini+19,+Milan,+Italy" target="_blank" rel="noopener">Open full route in Google Maps ↗</a>
+      </div>
+      <div class="trip-map-real" role="img" aria-label="Map overview of the Italy road trip from Milan to Lake Como, Brescia, Colfosco, Bassano del Grappa, Parma and back to Milan">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Italy_North_location_map.svg/1280px-Italy_North_location_map.svg.png" alt="Map of northern Italy">
+        <svg class="trip-map-overlay" viewBox="0 0 1240 792" preserveAspectRatio="none" aria-hidden="true">
+          <path class="route-shadow" d="M449 393 L461 281 L614 377 L879 161 L876 328 L632 535 L449 393"/>
+          <path class="route-line" d="M449 393 L461 281 L614 377 L879 161 L876 328 L632 535 L449 393"/>
+          <polygon class="route-arrow" points="454,337 467,346 453,350"/>
+          <polygon class="route-arrow" points="535,326 548,333 535,341"/>
+          <polygon class="route-arrow" points="746,267 760,272 750,283"/>
+          <polygon class="route-arrow" points="878,245 890,254 876,258"/>
+          <polygon class="route-arrow" points="756,423 769,430 756,439"/>
+          <polygon class="route-arrow" points="542,473 555,464 557,478"/>
+
+          <g>
+            <circle class="stop" cx="449" cy="393" r="18" fill="#1d4ed8"/>
+            <text class="number" x="449" y="393">1</text>
+            <rect class="label-box" x="300" y="410" width="230" height="68"/>
+            <text class="stop-label" x="320" y="439">Milan</text>
+            <text class="stop-sub" x="320" y="463">Start · 21–23 Aug</text>
+          </g>
+          <g>
+            <circle class="stop" cx="461" cy="281" r="18" fill="#0ea5e9"/>
+            <text class="number" x="461" y="281">2</text>
+            <rect class="label-box" x="280" y="202" width="275" height="70"/>
+            <text class="stop-label" x="300" y="232">Lake Como · Lezzeno</text>
+            <text class="stop-sub" x="300" y="257">23–26 Aug</text>
+          </g>
+          <g>
+            <circle class="stop" cx="614" cy="377" r="18" fill="#f59e0b"/>
+            <text class="number" x="614" y="377">3</text>
+            <rect class="label-box" x="637" y="357" width="205" height="68"/>
+            <text class="stop-label" x="657" y="386">Brescia</text>
+            <text class="stop-sub" x="657" y="410">26–29 Aug</text>
+          </g>
+          <g>
+            <circle class="stop" cx="879" cy="161" r="18" fill="#7c3aed"/>
+            <text class="number" x="879" y="161">4</text>
+            <rect class="label-box" x="820" y="75" width="330" height="70"/>
+            <text class="stop-label" x="840" y="105">Colfosco · Dolomites</text>
+            <text class="stop-sub" x="840" y="130">29 Aug–3 Sep</text>
+          </g>
+          <g>
+            <circle class="stop" cx="876" cy="328" r="18" fill="#059669"/>
+            <text class="number" x="876" y="328">5</text>
+            <rect class="label-box" x="900" y="335" width="220" height="68"/>
+            <text class="stop-label" x="920" y="364">Bassano</text>
+            <text class="stop-sub" x="920" y="388">3–7 Sep</text>
+          </g>
+          <g>
+            <circle class="stop" cx="632" cy="535" r="18" fill="#db2777"/>
+            <text class="number" x="632" y="535">6</text>
+            <rect class="label-box" x="650" y="550" width="205" height="68"/>
+            <text class="stop-label" x="670" y="579">Parma</text>
+            <text class="stop-sub" x="670" y="603">7–9 Sep</text>
+          </g>
+          <g>
+            <circle cx="449" cy="393" r="7" fill="#fff"/>
+            <text class="map-note" x="472" y="386">7 · Return to Milan</text>
+            <text class="map-note" x="472" y="405">9–10 Sep</text>
+          </g>
+          <text class="north" x="1175" y="44">N</text>
+          <path d="M1181 90 L1181 53 M1181 53 L1171 67 M1181 53 L1191 67" stroke="#334155" stroke-width="3" fill="none"/>
+          <rect x="22" y="735" width="540" height="35" rx="7" fill="rgba(255,255,255,0.9)"/>
+          <text class="map-note" x="38" y="758">Route line is approximate · open Google Maps for live navigation</text>
+        </svg>
+      </div>
+      <div class="legend">Base map: NordNordWest / Wikimedia Commons · CC BY-SA 3.0 DE · route overlay added for this trip</div>
+    </div>
+  </div>
+
+  <!-- Driving routes -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon">🗺️</span> Driving Routes</h2>
+    <div class="grid" style="gap:10px;">
+      <div class="route-card">
+        <div class="route-num">1</div>
+        <div class="route-info">
+          <div class="from-to">Milan → Lake Como (Lezzeno)</div>
+          <div class="meta">75 km · <span class="time">1h 24m</span> · via SS36 · some tolls</div>
+        </div>
+        <div class="route-actions">
+          <a class="btn btn-primary btn-sm" href="https://www.google.com/maps/dir/Via+Vitruvio+44+Milan+Italy/Localit%C3%A0+Bagnana+105+Lezzeno+Italy" target="_blank" rel="noopener">Directions</a>
+        </div>
+      </div>
+      <div class="route-card">
+        <div class="route-num">2</div>
+        <div class="route-info">
+          <div class="from-to">Lake Como → Brescia</div>
+          <div class="meta">119 km · <span class="time">1h 54m</span> · via SS36/A4 · tolls</div>
+        </div>
+        <div class="route-actions">
+          <a class="btn btn-primary btn-sm" href="https://www.google.com/maps/dir/Localit%C3%A0+Bagnana+105+Lezzeno+Italy/Viale+Europa+25+Brescia+Italy" target="_blank" rel="noopener">Directions</a>
+        </div>
+      </div>
+      <div class="route-card">
+        <div class="route-num">3</div>
+        <div class="route-info">
+          <div class="from-to">Brescia → Colfosco (Dolomites)</div>
+          <div class="meta">251 km · <span class="time">3h 10m</span> · via A22 north · tolls</div>
+        </div>
+        <div class="route-actions">
+          <a class="btn btn-primary btn-sm" href="https://www.google.com/maps/dir/Viale+Europa+25+Brescia+Italy/Str.+Col+Pradat+9+Colfosco+Italy" target="_blank" rel="noopener">Directions</a>
+        </div>
+      </div>
+      <div class="route-card">
+        <div class="route-num">4</div>
+        <div class="route-info">
+          <div class="from-to">Colfosco → Bassano del Grappa</div>
+          <div class="meta">136 km · <span class="time">2h 29m</span> · via SS241/A27 · scenic</div>
+        </div>
+        <div class="route-actions">
+          <a class="btn btn-primary btn-sm" href="https://www.google.com/maps/dir/Str.+Col+Pradat+9+Colfosco+Italy/Via+Capitello+17+San+Zenone+degli+Ezzelini+Italy" target="_blank" rel="noopener">Directions</a>
+        </div>
+      </div>
+      <div class="route-card">
+        <div class="route-num">5</div>
+        <div class="route-info">
+          <div class="from-to">Bassano → Parma</div>
+          <div class="meta">243 km · <span class="time">2h 17m</span> · via A4/A31 · tolls</div>
+        </div>
+        <div class="route-actions">
+          <a class="btn btn-primary btn-sm" href="https://www.google.com/maps/dir/Via+Capitello+17+San+Zenone+degli+Ezzelini+Italy/Via+Federico+II+4+Parma+Italy" target="_blank" rel="noopener">Directions</a>
+        </div>
+      </div>
+      <div class="route-card">
+        <div class="route-num">6</div>
+        <div class="route-info">
+          <div class="from-to">Parma → Milan (Agave Hotel)</div>
+          <div class="meta">131 km · <span class="time">1h 23m</span> · via A1 · tolls</div>
+        </div>
+        <div class="route-actions">
+          <a class="btn btn-primary btn-sm" href="https://www.google.com/maps/dir/Via+Federico+II+4+Parma+Italy/Via+Giovanni+Battista+Sammartini+19+Milan+Italy" target="_blank" rel="noopener">Directions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accommodation cards -->
+  <div class="section">
+    <h2 class="section-title">
+      <span class="icon">🏨</span> Accommodation & Weather
+      <span class="section-actions">
+        <span class="weather-status" id="weather-status" aria-live="polite">Loading live weather…</span>
+        <button class="weather-refresh" id="refresh-weather" type="button" onclick="refreshWeather()">↻ Refresh</button>
+      </span>
+    </h2>
+    <div class="grid grid-3" id="stays-grid"></div>
+  </div>
+
+  <!-- Return flights -->
+  <section class="flight-section" aria-labelledby="return-flights-title">
+    <div class="flight-banner">
+      <div class="flight-icon">🛫</div>
+      <div><h2 id="return-flights-title">Return flights</h2><p>Milan → Sydney via Hong Kong · Thursday 10–Friday 11 September</p></div>
+    </div>
+    <div class="flight-card return">
+      <div class="flight-card-head"><h3>Cathay Pacific · Economy Light</h3><span>1 checked bag included</span></div>
+      <div class="flight-legs">
+        <article class="flight-leg">
+          <div class="flight-number">CX234 · 10–11 SEP</div>
+          <div class="flight-route"><div class="flight-place"><strong>Milan (MXP)</strong><span>Malpensa · Terminal 1</span></div><div class="flight-route-arrow">→</div><div class="flight-place"><strong>Hong Kong (HKG)</strong><span>International · Terminal 1</span></div></div>
+          <div class="flight-times"><div><strong>12:45</strong>Departs · 10 Sep</div><div><strong>06:15</strong>Arrives · 11 Sep</div><div><strong>11h 30m</strong>Duration</div></div>
+          <div class="flight-meta">Seat 40E · Cathay Pacific operated</div>
+        </article>
+        <article class="flight-leg">
+          <div class="flight-number">CX139 · 11 SEP</div>
+          <div class="flight-route"><div class="flight-place"><strong>Hong Kong (HKG)</strong><span>International · Terminal 1</span></div><div class="flight-route-arrow">→</div><div class="flight-place"><strong>Sydney (SYD)</strong><span>Kingsford Smith · Terminal 1</span></div></div>
+          <div class="flight-times"><div><strong>09:10</strong>Departs</div><div><strong>20:10</strong>Arrives</div><div><strong>9h 00m</strong>Duration</div></div>
+          <div class="flight-meta">Seat 40H · Cathay Pacific operated</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Things to do checklist -->
+  <div class="section">
+    <h2 class="section-title">
+      <span class="icon">✅</span> Things To Do
+      <span class="section-actions">
+        <span class="save-status" id="save-status" aria-live="polite">Loaded from embedded data</span>
+        <button class="save-dashboard" id="save-dashboard" type="button" onclick="saveDashboard()">💾 Save dashboard</button>
+      </span>
+    </h2>
+    <div class="checklist">
+      <div class="checklist-controls">
+        <button onclick="clearDone()">Clear Done</button>
+        <button onclick="clearAll()">Clear All</button>
+      </div>
+      <div id="checklist-items"></div>
+      <div class="checklist-add">
+        <input type="text" id="new-item" placeholder="Add a new item..." onkeydown="if(event.key==='Enter')addItem()">
+        <button onclick="addItem()">Add</button>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+      <div class="checklist-stats" id="stats"></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Built with live weather and Google Maps route data · Route totals recalculated 18 August 2026<br>
+  Add, edit, delete and check off tasks. Use “Save dashboard” to write the updated checklist back into this HTML file.
+</footer>
+
+<script id="dataStore" type="application/json">
+{
+  "checklist": [
+    { "text": "Book restaurant in Bellagio for sunset dinner", "done": false },
+    { "text": "Research ferry timetable Lake Como", "done": false },
+    { "text": "Buy vignette / check toll roads for Dolomites drive", "done": false },
+    { "text": "Pack hiking boots for Dolomites", "done": false },
+    { "text": "Grappa tasting in Bassano", "done": false },
+    { "text": "Parma ham & cheese factory tour", "done": false },
+    { "text": "Download offline Google Maps for all routes", "done": false },
+    { "text": "Check Kia Sportage boot space for luggage", "done": false }
+  ]
+}
+</script>
+
+<script>
+const stays = [
+  {
+    city: "Milan",
+    dates: "21–23 Aug",
+    nights: 2,
+    booking: "Airbnb",
+    address: "Via Vitruvio, 44, 20124 Milan",
+    img: "https://images.unsplash.com/photo-1575399877732-9363881b907e?fm=jpg&q=60&w=800&auto=format&fit=crop",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Via+Vitruvio+44+Milan+Italy",
+    latitude: 45.4642,
+    longitude: 9.1900,
+    weather: { temp: null, cond: "Loading live weather…", icon: "⏳", live: false }
+  },
+  {
+    city: "Lake Como (Lezzeno)",
+    dates: "23–26 Aug",
+    nights: 3,
+    booking: "Airbnb",
+    address: "Località Bagnana 105, 22025 Lezzeno",
+    companions: ["Yves & Benthe"],
+    img: "https://images.unsplash.com/photo-1654011905384-c9260487848e?fm=jpg&q=60&w=800&auto=format&fit=crop",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Localit%C3%A0+Bagnana+105+Lezzeno+Italy",
+    latitude: 45.9833,
+    longitude: 9.2610,
+    weather: { temp: null, cond: "Loading live weather…", icon: "⏳", live: false }
+  },
+  {
+    city: "Brescia",
+    dates: "26–29 Aug",
+    nights: 3,
+    booking: "Booking.com",
+    address: "Viale Europa 25, 25123 Brescia BS",
+    img: "https://plus.unsplash.com/premium_photo-1697730014451-46c71896f0c2?fm=jpg&q=60&w=800&auto=format&fit=crop",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Viale+Europa+25+Brescia+Italy",
+    latitude: 45.5416,
+    longitude: 10.2118,
+    weather: { temp: null, cond: "Loading live weather…", icon: "⏳", live: false }
+  },
+  {
+    city: "Colfosco (Dolomites)",
+    dates: "29 Aug–3 Sep",
+    nights: 5,
+    booking: "Booking.com",
+    address: "Str. Col Pradat 9, 39033 Colfosco BZ",
+    companions: ["Yves & Benthe"],
+    possibleCompanions: ["Joris & Milou"],
+    img: "https://images.unsplash.com/photo-1748895935339-1c6e1a6f6f4a?fm=jpg&q=60&w=800&auto=format&fit=crop",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Str.+Col+Pradat+9+Colfosco+Italy",
+    latitude: 46.5535,
+    longitude: 11.8544,
+    weather: { temp: null, cond: "Loading live weather…", icon: "⏳", live: false }
+  },
+  {
+    city: "Bassano del Grappa",
+    dates: "3–7 Sep",
+    nights: 4,
+    booking: "Airbnb",
+    address: "Via Capitello 17, 31020 San Zenone degli Ezzelini",
+    companions: ["Yves & Benthe"],
+    img: "https://upload.wikimedia.org/wikipedia/commons/c/c1/7509-bassano-del-grappa-ponte-ponte-degli-alpini.JPG",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Via+Capitello+17+San+Zenone+degli+Ezzelini+Italy",
+    latitude: 45.7807,
+    longitude: 11.8384,
+    weather: { temp: null, cond: "Loading live weather…", icon: "⏳", live: false }
+  },
+  {
+    city: "Parma",
+    dates: "7–9 Sep",
+    nights: 2,
+    booking: "Airbnb",
+    address: "Via Federico II 4, 43126 Parma",
+    img: "https://images.unsplash.com/photo-1700337906523-1cea44d05388?fm=jpg&q=60&w=800&auto=format&fit=crop",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Via+Federico+II+4+Parma+Italy",
+    latitude: 44.8015,
+    longitude: 10.3279,
+    weather: { temp: null, cond: "Loading live weather…", icon: "⏳", live: false }
+  },
+  {
+    city: "Milan (Agave Hotel)",
+    dates: "9–10 Sep",
+    nights: 1,
+    booking: "Booking.com",
+    address: "Via G.B. Sammartini 19, 20125 Milano MI",
+    img: "https://images.unsplash.com/photo-1575399877732-9363881b907e?fm=jpg&q=60&w=800&auto=format&fit=crop",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Via+Giovanni+Battista+Sammartini+19+Milan+Italy",
+    latitude: 45.4642,
+    longitude: 9.1900,
+    weather: { temp: null, cond: "Loading live weather…", icon: "⏳", live: false }
+  }
+];
+
+const WMO_WEATHER = {
+  0: { icon: '☀️', label: 'Clear sky' },
+  1: { icon: '🌤️', label: 'Mainly clear' },
+  2: { icon: '⛅', label: 'Partly cloudy' },
+  3: { icon: '☁️', label: 'Overcast' },
+  45: { icon: '🌫️', label: 'Fog' },
+  48: { icon: '🌫️', label: 'Rime fog' },
+  51: { icon: '🌦️', label: 'Light drizzle' },
+  53: { icon: '🌦️', label: 'Drizzle' },
+  55: { icon: '🌧️', label: 'Heavy drizzle' },
+  56: { icon: '🌧️', label: 'Freezing drizzle' },
+  57: { icon: '🌧️', label: 'Heavy freezing drizzle' },
+  61: { icon: '🌦️', label: 'Light rain' },
+  63: { icon: '🌧️', label: 'Rain' },
+  65: { icon: '🌧️', label: 'Heavy rain' },
+  66: { icon: '🌧️', label: 'Freezing rain' },
+  67: { icon: '🌧️', label: 'Heavy freezing rain' },
+  71: { icon: '🌨️', label: 'Light snow' },
+  73: { icon: '❄️', label: 'Snow' },
+  75: { icon: '❄️', label: 'Heavy snow' },
+  77: { icon: '❄️', label: 'Snow grains' },
+  80: { icon: '🌦️', label: 'Light showers' },
+  81: { icon: '🌧️', label: 'Showers' },
+  82: { icon: '🌧️', label: 'Heavy showers' },
+  85: { icon: '🌨️', label: 'Snow showers' },
+  86: { icon: '🌨️', label: 'Heavy snow showers' },
+  95: { icon: '⛈️', label: 'Thunderstorm' },
+  96: { icon: '⛈️', label: 'Thunderstorm with hail' },
+  99: { icon: '⛈️', label: 'Heavy thunderstorm with hail' }
+};
+
+function describeWeather(code) {
+  return WMO_WEATHER[code] || { icon: '🌡️', label: 'Current conditions' };
+}
+
+async function fetchLiveWeather(stay) {
+  const params = new URLSearchParams({
+    latitude: stay.latitude,
+    longitude: stay.longitude,
+    current: 'temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,weather_code,wind_speed_10m,cloud_cover',
+    temperature_unit: 'celsius',
+    wind_speed_unit: 'kmh',
+    precipitation_unit: 'mm',
+    timezone: 'auto',
+    forecast_days: '1'
+  });
+  const response = await fetch(`https://api.open-meteo.com/v1/forecast?${params.toString()}`, { cache: 'no-store' });
+  if (!response.ok) throw new Error(`Weather request failed (${response.status})`);
+  const payload = await response.json();
+  const current = payload.current;
+  if (!current) throw new Error('No current weather returned');
+  const description = describeWeather(current.weather_code);
+  const localTime = current.time ? current.time.replace('T', ' ') : 'just now';
+  return {
+    temp: current.temperature_2m,
+    apparent: current.apparent_temperature,
+    precipitation: current.precipitation || 0,
+    wind: current.wind_speed_10m,
+    cloud: current.cloud_cover,
+    icon: description.icon,
+    cond: description.label,
+    updated: `${localTime} ${payload.timezone_abbreviation || ''}`.trim(),
+    live: true,
+    error: false
+  };
+}
+
+async function refreshWeather() {
+  if (window.weatherLoading) return;
+  window.weatherLoading = true;
+  const button = document.getElementById('refresh-weather');
+  const status = document.getElementById('weather-status');
+  if (button) { button.disabled = true; button.textContent = '↻ Updating…'; }
+  if (status) status.textContent = 'Fetching current conditions…';
+
+  stays.forEach(stay => {
+    stay.weather = { temp: null, cond: 'Loading live weather…', icon: '⏳', live: false, error: false };
+  });
+  renderStays();
+
+  const results = await Promise.allSettled(stays.map(async stay => {
+    stay.weather = await fetchLiveWeather(stay);
+  }));
+  const failures = results.filter(result => result.status === 'rejected').length;
+  results.forEach((result, index) => {
+    if (result.status === 'rejected') {
+      stays[index].weather = { temp: null, cond: 'Live weather unavailable', icon: '⚠️', live: false, error: true };
+    }
+  });
+  renderStays();
+
+  const updatedAt = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  if (status) status.textContent = failures ? `Updated ${updatedAt} · ${failures} unavailable` : `Updated ${updatedAt} · live`;
+  if (button) { button.disabled = false; button.textContent = '↻ Refresh'; }
+  window.weatherLoading = false;
+}
+
+function renderStays() {
+  const grid = document.getElementById('stays-grid');
+  grid.innerHTML = stays.map(s => `
+    <div class="card">
+      <img class="stay-img" src="${s.img}" alt="${s.city}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="stay-img-fallback" style="display:none;">📍</div>
+      <div class="card-header">
+        <h3>${s.city}</h3>
+        <div class="dates">${s.dates} · ${s.nights} night${s.nights>1?'s':''}</div>
+      </div>
+      <div class="card-body">
+        <div class="info-row">
+          <span class="info-label">Booked via</span>
+          <span class="info-value">${s.booking}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Address</span>
+          <span class="info-value" style="font-size:12px;">${s.address}</span>
+        </div>
+        ${s.companions || s.possibleCompanions ? `
+          <div class="companions">
+            ${(s.companions || []).map(name => `<span class="companion-tag">👥 With ${name}</span>`).join('')}
+            ${(s.possibleCompanions || []).map(name => `<span class="companion-tag possible">❔ Maybe joining: ${name}</span>`).join('')}
+          </div>
+        ` : ''}
+        <div class="weather-badge">
+          <span>${s.weather.icon}</span>
+          <span class="temp">${s.weather.live ? Math.round(s.weather.temp) + '°C' : '—'}</span>
+          <span class="cond">${s.weather.cond}</span>
+        </div>
+        <div class="weather-detail ${s.weather.error ? 'weather-error' : ''}">
+          ${s.weather.live
+            ? `${Math.round(s.weather.apparent)}°C feels like · ${s.weather.precipitation.toFixed(1)} mm rain · ${Math.round(s.weather.wind)} km/h wind · ${Math.round(s.weather.cloud)}% cloud · ${s.weather.updated}`
+            : (s.weather.error ? 'Could not retrieve live conditions — try Refresh' : 'Fetching current conditions…')}
+        </div>
+        <br>
+        <a class="btn btn-primary" href="${s.mapsUrl}" target="_blank" rel="noopener">📍 View on Maps</a>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Checklist state is embedded in the HTML dataStore tag.
+const DEFAULT_CHECKLIST = [
+  { text: "Book restaurant in Bellagio for sunset dinner", done: false },
+  { text: "Research ferry timetable Lake Como", done: false },
+  { text: "Buy vignette / check toll roads for Dolomites drive", done: false },
+  { text: "Pack hiking boots for Dolomites", done: false },
+  { text: "Grappa tasting in Bassano", done: false },
+  { text: "Parma ham & cheese factory tour", done: false },
+  { text: "Download offline Google Maps for all routes", done: false },
+  { text: "Check Kia Sportage boot space for luggage", done: false }
+];
+
+function readDataStore() {
+  const node = document.getElementById('dataStore');
+  try {
+    const parsed = JSON.parse(node ? node.textContent.trim() : '{}');
+    return parsed && typeof parsed === 'object' ? parsed : {};
+  } catch (error) {
+    return {};
+  }
+}
+
+const embeddedState = readDataStore();
+let checklist = Array.isArray(embeddedState.checklist)
+  ? embeddedState.checklist
+      .filter(item => item && typeof item.text === 'string')
+      .map(item => ({ text: item.text, done: Boolean(item.done) }))
+  : DEFAULT_CHECKLIST.map(item => ({ ...item }));
+let editingIndex = null;
+let fileHandle = null;
+let isDirty = false;
+
+function setSaveStatus(message) {
+  const status = document.getElementById('save-status');
+  if (status) status.textContent = message;
+}
+
+function markDirty() {
+  isDirty = true;
+  setSaveStatus('Unsaved changes');
+}
+
+function renderChecklist() {
+  const container = document.getElementById('checklist-items');
+  if (!checklist.length) {
+    container.innerHTML = '<div class="empty-checklist">No tasks yet. Add one below.</div>';
+  } else {
+    container.innerHTML = checklist.map((item, i) => {
+      if (editingIndex === i) {
+        return `
+          <div class="checklist-item">
+            <div class="checklist-edit">
+              <input class="checklist-edit-input" id="edit-input-${i}" value="${escapeAttr(item.text)}" aria-label="Edit task" onkeydown="if(event.key==='Enter')commitEdit(${i});if(event.key==='Escape')cancelEdit()">
+              <div class="checklist-edit-actions">
+                <button class="save-edit" type="button" onclick="commitEdit(${i})">Save</button>
+                <button class="cancel-edit" type="button" onclick="cancelEdit()">Cancel</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      return `
+        <div class="checklist-item ${item.done ? 'done' : ''}">
+          <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleItem(${i})" aria-label="Mark task complete">
+          <label onclick="toggleItem(${i})">${escapeHtml(item.text)}</label>
+          <div class="actions">
+            <button class="edit" type="button" onclick="startEdit(${i})">Edit</button>
+            <span class="del" role="button" tabindex="0" aria-label="Delete task" onclick="deleteItem(${i})" onkeydown="if(event.key==='Enter' || event.key===' ')deleteItem(${i})">×</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+  updateStats();
+}
+
+function updateStats() {
+  const done = checklist.filter(item => item.done).length;
+  const total = checklist.length;
+  const pct = total > 0 ? (done / total * 100) : 0;
+  document.getElementById('progress').style.width = pct + '%';
+  document.getElementById('stats').textContent = `${done} of ${total} done · ${Math.round(pct)}%`;
+}
+
+function toggleItem(i) {
+  if (!checklist[i]) return;
+  checklist[i].done = !checklist[i].done;
+  markDirty();
+  renderChecklist();
+}
+
+function startEdit(i) {
+  if (!checklist[i]) return;
+  editingIndex = i;
+  renderChecklist();
+  const input = document.getElementById(`edit-input-${i}`);
+  if (input) {
+    input.focus();
+    input.select();
+  }
+}
+
+function commitEdit(i) {
+  const input = document.getElementById(`edit-input-${i}`);
+  const text = input ? input.value.trim() : '';
+  if (!text) {
+    setSaveStatus('A task cannot be empty');
+    if (input) input.focus();
+    return;
+  }
+  checklist[i].text = text;
+  editingIndex = null;
+  markDirty();
+  renderChecklist();
+}
+
+function cancelEdit() {
+  editingIndex = null;
+  renderChecklist();
+}
+
+function deleteItem(i) {
+  if (!checklist[i]) return;
+  checklist.splice(i, 1);
+  if (editingIndex === i) editingIndex = null;
+  if (editingIndex !== null && editingIndex > i) editingIndex--;
+  markDirty();
+  renderChecklist();
+}
+
+function addItem() {
+  const input = document.getElementById('new-item');
+  const text = input.value.trim();
+  if (!text) return;
+  checklist.push({ text, done: false });
+  input.value = '';
+  markDirty();
+  renderChecklist();
+  input.focus();
+}
+
+function clearDone() {
+  const originalLength = checklist.length;
+  checklist = checklist.filter(item => !item.done);
+  if (checklist.length !== originalLength) markDirty();
+  editingIndex = null;
+  renderChecklist();
+}
+
+function clearAll() {
+  if (!checklist.length) return;
+  checklist = [];
+  editingIndex = null;
+  markDirty();
+  renderChecklist();
+}
+
+function buildDocumentForSave() {
+  const state = {
+    checklist: checklist.map(item => ({ text: item.text, done: Boolean(item.done) })),
+    savedAt: new Date().toISOString()
+  };
+  const json = JSON.stringify(state, null, 2).replace(/</g, '\\u003c');
+  const serializedDom = document.documentElement.outerHTML;
+  const storePattern = /(<script id="dataStore" type="application\/json">)[\s\S]*?(<\/script>)/i;
+  if (!storePattern.test(serializedDom)) throw new Error('Embedded data store was not found');
+  const html = '<!doctype html>\n' + serializedDom.replace(storePattern, (match, open, close) => open + json + close);
+  return { html, json };
+}
+
+function suggestedFileName() {
+  const current = (location.pathname || '').split('/').pop();
+  return current && current.toLowerCase().endsWith('.html') ? current : 'italy-holiday-dashboard.html';
+}
+
+function downloadFallback(html) {
+  const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = suggestedFileName();
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+async function saveDashboard() {
+  if (editingIndex !== null) {
+    commitEdit(editingIndex);
+    if (editingIndex !== null) return;
+  }
+  const button = document.getElementById('save-dashboard');
+
+  try {
+    // Build the file before changing the button to its transient “Saving…” state.
+    // Otherwise that temporary state would be embedded into the saved HTML.
+    const { html, json } = buildDocumentForSave();
+    if (button) {
+      button.disabled = true;
+      button.textContent = '💾 Saving…';
+    }
+    setSaveStatus('Preparing file…');
+    if ('showSaveFilePicker' in window) {
+      if (!fileHandle) {
+        fileHandle = await window.showSaveFilePicker({
+          suggestedName: suggestedFileName(),
+          types: [{ description: 'HTML dashboard', accept: { 'text/html': ['.html'] } }]
+        });
+      }
+      const writable = await fileHandle.createWritable();
+      await writable.write(html);
+      await writable.close();
+      const dataStore = document.getElementById('dataStore');
+      if (dataStore) dataStore.textContent = json;
+      isDirty = false;
+      setSaveStatus(`Saved ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`);
+    } else {
+      downloadFallback(html);
+      const dataStore = document.getElementById('dataStore');
+      if (dataStore) dataStore.textContent = json;
+      isDirty = false;
+      setSaveStatus('Downloaded updated dashboard');
+    }
+  } catch (error) {
+    if (error && error.name === 'AbortError') {
+      setSaveStatus('Save canceled');
+    } else {
+      fileHandle = null;
+      setSaveStatus('Save failed — try again');
+      console.error(error);
+    }
+  } finally {
+    if (button) {
+      button.disabled = false;
+      button.textContent = '💾 Save dashboard';
+    }
+  }
+}
+
+function escapeAttr(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function escapeHtml(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+// Recover gracefully if an older saved copy captured the transient Saving state.
+const initialSaveButton = document.getElementById('save-dashboard');
+if (initialSaveButton) {
+  initialSaveButton.disabled = false;
+  initialSaveButton.textContent = '💾 Save dashboard';
+}
+const initialWeatherButton = document.getElementById('refresh-weather');
+if (initialWeatherButton) {
+  initialWeatherButton.disabled = false;
+  initialWeatherButton.textContent = '↻ Refresh';
+}
+
+renderStays();
+renderChecklist();
+refreshWeather();
+</script>
+</body>
+</html>
